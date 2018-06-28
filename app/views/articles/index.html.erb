@@ -1,0 +1,24 @@
+<h1 align="center">Listing articles</h1>
+<table border="1px" bgcolor="#D7FAFC" align="center">
+  <tr>
+    <th>Title</th>
+    <th>Text</th>
+    <th>first_name</th>
+    <th>last_name</th>
+  </tr>
+ <% @articles.each do |article| %>
+    <tr>
+      <td><%= article.title %></td>
+      <td><%= article.text %></td>
+      <td><%=article.first_name %></td>
+      <td><%=article.last_name %></td>
+      <td><%= link_to 'Show', "/home/comment/#{article.id}" %></td>
+      <td><%= link_to 'Edit', edit_article_path(article) %></td>
+     <td><%= link_to 'Destroy', article_path(article),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
+<%= link_to 'New article', new_article_path %>
+<!-- <a href="/articles/new">new block</a> -->
